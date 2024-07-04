@@ -1,13 +1,6 @@
-import csv
 from http_requests.get import fetch_books_data
 from interfaces.book import Book
-
-def save_to_csv(data, filename='books.csv'):
-    keys = data[0].keys()
-    with open(filename, 'w', newline='', encoding='utf-8') as output_file:
-        dict_writer = csv.DictWriter(output_file, fieldnames=keys)
-        dict_writer.writeheader()
-        dict_writer.writerows(data)
+from helpers.export_csv import save_to_csv
 
 def main():
     search_term = 'search+terms'
