@@ -5,14 +5,14 @@ from helpers.database import SessionLocal
 from sqlalchemy.orm import Session
 
 def insert_data():
-    # Obtener datos de usuarios desde la función fetch_user_data
+    #! API USE 
     users_data = fetch_user_data()
 
     if not users_data:
         print("No se encontraron datos de usuarios.")
         return
 
-    # Obtener datos de publicaciones desde la función fetch_post_data
+    #! API USE 
     posts_data = fetch_post_data()
 
     if not posts_data:
@@ -23,28 +23,14 @@ def insert_data():
     db: Session = SessionLocal()
 
     try:
-        # Recorrer los datos de usuarios y crear instancias de User
+        # Recorremos los datos de usuarios y crear instancias de User usando el método de clase
         for user_data in users_data:
-            user = User(
-                user_id=user_data['id'],
-                name=user_data['name'],
-                username=user_data['username'],
-                email=user_data['email'],
-                address=str(user_data['address']),
-                phone=user_data['phone'],
-                website=user_data['website'],
-                company=user_data['company']['name']
-            )
+            user = User.from_dict(user_data)
             db.add(user)
 
-        # Recorrer los datos de publicaciones y crear instancias de Post
+        # Recorremos los datos de publicaciones y creamos en base a método de la clase 
         for post_data in posts_data:
-            post = Post(
-                user_id=post_data['userId'],
-                post_id=post_data['id'],
-                title=post_data['title'],
-                body=post_data['body']
-            )
+            post = Post.from_dict(post_data)
             db.add(post)
 
         # Confirmar los cambios
@@ -57,8 +43,7 @@ def insert_data():
         print("Error al insertar datos:", e)
 
     finally:
-        # Cerrar la sesión de SQLAlchemy
         db.close()
 
-# Ejecutar la función para insertar los datos
+# Execute  
 insert_data()

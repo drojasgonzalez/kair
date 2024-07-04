@@ -13,3 +13,12 @@ class Post(Base):
 
     def __repr__(self):
         return f"<Post(id={self.id}, user_id={self.user_id}, post_id={self.post_id}, title={self.title})>"
+
+    @classmethod
+    def from_dict(cls, data):
+        return cls(
+            user_id=data['userId'],
+            post_id=data['id'],
+            title=data['title'],
+            body=data['body']
+        )

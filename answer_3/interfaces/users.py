@@ -17,3 +17,16 @@ class User(Base):
 
     def __repr__(self):
         return f"<User(id={self.id}, name={self.name}, username={self.username})>"
+
+    @classmethod
+    def from_dict(cls, data):
+        return cls(
+            user_id=data['id'],
+            name=data['name'],
+            username=data['username'],
+            email=data['email'],
+            address=str(data['address']),
+            phone=data['phone'],
+            website=data['website'],
+            company=data['company']['name']
+        )
