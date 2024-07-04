@@ -79,3 +79,15 @@ docker compose up
  python3 main.py
 
 ```
+
+# answer 4 - documentation
+
+> desactivate virtual3 env : `deactivate`
+
+move to folder answer_4 with `cd answer_4`
+
+-   docker up
+
+```sh
+docker compose up
+```
