@@ -41,3 +41,35 @@ move to folder answer_2 with `cd answer_2`
 ```sh
 docker compose up
 ```
+
+# answer 3 - documentation
+
+move to folder answer_3 with `cd answer_3`
+
+-   create virtual env on python
+
+```sh
+python3 -m venv virtualenv3
+```
+
+-   Activate/use virtual env
+
+```sh
+source virtualenv3/bin/activate
+```
+
+> NOTE : If activate don't work use : `chmod +x ./virtualenv3/bin/activate`
+
+-   Install requirements
+
+```sh
+pip install -r requirements.txt
+```
+
+-   Run kair
+
+```sh
+
+ python3 main.py
+
+```
