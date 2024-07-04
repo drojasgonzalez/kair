@@ -1,4 +1,6 @@
-# kair
+# answer 1 - documentation
+
+move to folder answer_1 with `cd answer_1`
 
 -   create virtual env on python
 
@@ -26,4 +28,16 @@ pip install -r requirements.txt
 
  python3 main.py
 
+```
+
+# answer 2 - documentation
+
+> desactivate virtual env : `deactivate`
+
+move to folder answer_2 with `cd answer_2`
+
+-   docker up
+
+```sh
+docker compose up
 ```
