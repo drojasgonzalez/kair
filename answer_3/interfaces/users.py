@@ -1,10 +1,19 @@
-class User:
-    def __init__(self, user_id, name, username, email, address, phone, website, company):
-        self.user_id = user_id
-        self.name = name
-        self.username = username
-        self.email = email
-        self.address = address
-        self.phone = phone
-        self.website = website
-        self.company = company
+from sqlalchemy import Column, Integer, String, Text
+from sqlalchemy.ext.declarative import declarative_base
+
+Base = declarative_base()
+
+class User(Base):
+    __tablename__ = 'users'
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    user_id = Column(Integer)
+    name = Column(String)
+    username = Column(String)
+    email = Column(String)
+    address = Column(Text) 
+    phone = Column(String)
+    website = Column(String)
+    company = Column(String)
+
+    def __repr__(self):
+        return f"<User(id={self.id}, name={self.name}, username={self.username})>"
