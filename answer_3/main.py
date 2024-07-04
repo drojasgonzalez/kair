@@ -1,6 +1,10 @@
 from http_requests.get import fetch_user_data, fetch_post_data
 from interfaces.users import User
 from interfaces.posts import Post
+from interfaces.logs import Log  
+
+from datetime import datetime
+
 from helpers.database import SessionLocal
 from sqlalchemy.orm import Session
 
@@ -33,6 +37,9 @@ def insert_data():
             post = Post.from_dict(post_data)
             db.add(post)
 
+        log_message = f"Actualización de base de datos realizada correctamente a las {datetime.now()}"
+        db.add(Log(level='INFO', message=log_message)) 
+        
         # Confirmar los cambios
         db.commit()
 
@@ -42,8 +49,14 @@ def insert_data():
         db.rollback()
         print("Error al insertar datos:", e)
 
+        # Registrar el error en los logs
+        error_message = f"Error al insertar datos en la base de datos: {e}"
+        db.add(Log(level='ERROR', message=error_message))  
+
     finally:
         db.close()
 
-# Execute  
+# Ejecutar la función insert_data
 insert_data()
+
+

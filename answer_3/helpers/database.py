@@ -21,6 +21,7 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 # Importa los modelos aquí para asegurarte de que estén registrados antes de crear las tablas
 from interfaces.users import Base, User
 from interfaces.posts import Base, Post
+from interfaces.logs import Base, Log
 
 # Crear todas las tablas en la base de datos
 Base.metadata.create_all(bind=engine)
