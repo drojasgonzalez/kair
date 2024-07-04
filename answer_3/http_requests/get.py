@@ -17,7 +17,7 @@ def fetch_user_data():
 
 
 def fetch_post_data():    
-    api_url = os.getenv('API_URL') + 'users'
+    api_url = os.getenv('API_URL') + 'posts'
 
     response = requests.get(api_url)
     
