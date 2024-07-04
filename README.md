@@ -66,6 +66,12 @@ source virtualenv3/bin/activate
 pip install -r requirements.txt
 ```
 
+-   docker up
+
+```sh
+docker compose up
+```
+
 -   Run kair
 
 ```sh
